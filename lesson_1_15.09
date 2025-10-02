@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
 int main() {/*
 	int a = 0;
 	float temp = 0.0;

@@ -1,6 +1,7 @@
 #include <iostream>
 
 
+
 int sum_of_num(int a) 
 {
 	int sum = 0;

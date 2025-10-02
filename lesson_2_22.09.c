@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 
+
 int is_tr(float a, float b, float c) {
 	if (a + b > c && a + c > b && b + c > a) {
 		return 1;
