@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {/*
+	int a = 0;
+	float temp = 0.0;
+	float b = 0.0;
+	char c = 'A';
+	scanf("%d %f %c", &a, &b, &c);
+	
+	printf("%s\n", "names:");
+	printf("%s\n", "a\tb\tc\n");
+	printf("%s\n", "_________________");
+
+	printf("%s", "values\n");
+	printf("%d\t", a);
+	printf("%f\t", b);
+	printf("%c\t\n", c);
+	printf("%s\n", "________________");
+
+	printf("%s\n", "sizes");
+	printf("%lu\t", sizeof(a));
+	printf("%lu\t", sizeof(b));
+	printf("%lu\t\n", sizeof(c));
+	printf("%s\n", "________________");
+
+	printf("%s\n", "task_2");
+	scanf("%f", &temp);
+	float far_temp = ((9*temp)/5) + 32;
+	printf("%s %f\n", "New temperature is:", far_temp);
+	printf("%s\n", "________________");
+	
+	printf("%s\n", "task_3");
+	float speed = 0.0;
+	scanf("%f", &speed);
+	float new_speed = speed * 3.6;
+	printf("%s %f\n", "Your speed is:", new_speed);
+	printf("%s", "_________________");
+	*/
+	printf("%s\n", "task_4");
+	int time_h_1, time_m_1, time_s_1;
+	int time_h_2, time_m_2, time_s_2;
+	scanf("%d %d %d", &time_h_1, &time_m_1, &time_s_1);
+	scanf("%d %d %d", &time_h_2, &time_m_2, &time_s_2);
+	int val_s_1 = 360*time_h_1 + 60*time_m_1 + time_s_1;
+	int val_s_2 = 360*time_h_2 + 60*time_m_2 + time_s_2;
+	printf("%s %d\n","Your answer is:", abs(val_s_1 - val_s_2)); 
+
+	return 0;
+}
+
+
+
