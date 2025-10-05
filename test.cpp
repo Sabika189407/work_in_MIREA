@@ -33,6 +33,16 @@ int main()
 	int answer = sum_of_num(a);
 	printf("%s\t%d\n", "Your sum of numbers is:", answer); */
 	//task_test();
-	sum_of_num(a);
+//	sum_of_num(a);
+	float b= 0.000001;
+	if (b < 0,1)
+	{
+		b = b * 10;
+	}
+	do
+	{
+		b = b * 10;
+	}while (b * 10 < 1);
+	std::cout<<b<<std::endl;
 	return 0;
 }

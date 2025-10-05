@@ -1,0 +1,93 @@
+#include <stdio.h>
+
+int temperature()
+{
+	float temp_c = 0.0;
+	scanf("%f", &temp_c);
+	float temp_f = 1.8*temp_c + 32;
+	return temp_f;
+}
+
+int vel()
+{
+	int vel_km = 0;
+	scanf("%d", &vel_km);
+	float vel_m = vel_km / 3.6;
+	return vel_m;
+}
+int time_moments()
+{
+	int hour1 = 0;
+	int min1 = 0;
+	int sec1 = 0;
+	int hour2 = 0;
+	int min2 = 0;
+	int sec2 = 0;
+	scanf("%d %d %d %d %d %d", &hour1, &min1, &sec1, &hour2, &min2, &sec2);
+	return (360*hour2+60*min2+sec2 - 360*hour1+60*min1+sec1);
+}
+
+/*void math_swap()
+{
+	float a = 0;
+	float b = 0;
+	scanf("%f %f", );
+}*/
+
+int len(float a)
+{
+	int count = 1;
+	while (a % 10 == 0)
+	{
+		count++;
+		a / 10;
+	}
+	return count;
+}
+	
+	
+	
+int main()
+{
+	/*
+	//1-st lesson, task_1
+	printf("%s\n%s\n%s\n", "the first lesson, task_1", "Hello, world!", "________________________");
+	
+	//task_2
+	int first_num = 0.0;
+	int second_num = 0.0;
+	printf("%s", "task_2. Enter two numbers(<float1> <float2>):");
+	scanf("%d %d", &first_num, &second_num);
+	float answer1 = first_num/second_num;
+	float answer2 = first_num%second_num;
+	printf("%s\t%f\t%s\t%f\n%s\n","division of ur two numbers without remainder", answer1, "ur remainer", answer2, "________________________");
+	//task_3
+	printf("%s", "task_3. Enter three caracters(<int> <double> <char>):");
+	int num = 0;
+	float double_num = 0.0;
+	char char_num;
+	scanf("%d %f %c", &num, &double_num, &char_num);
+	printf("%s\t%d\t%f\t%c\n%s\t%lu\t%lu\t%lu\n%s\n", "Here are ur caracters:", num, double_num, char_num, "here are sizes or ur catacters", sizeof(num), sizeof(double_num), sizeof(char_num), "________________________");
+	
+	//2-nd lesson, task_2
+	printf("%s", "lesson_2, task_2. Enter ur temperature C (<float>):");
+	float answer = temperature();
+	printf("%s\t%f\n%s\n", "this is ur temperature in Farengate:", answer, "________________________");
+	
+	//task_3
+	printf("%s", "task_3. Enter ur velocity (<int>):");
+	float answer = vel();
+	printf("%s\t%f\n%s\n", "this is ur velocity in mph:", answer, "________________________");
+	return 0;
+	
+	//task_4
+	printf("task_4. Enter two moment of time(<hour_int1> <minute_int2> <second_int1> <hour_int2> <minute_int2> <seconds_int2>):");
+	int answer = time_moments();
+	printf("%s\t%d\n%s\n","amount seconds between ur moments:", answer, "_______________________");
+	*/
+	float a = 0;
+	scanf("%d", &a);
+	int answer = len(a);
+	printf("%d", answer);
+	return 0;
+}
