@@ -65,25 +65,25 @@ int base_2()
 void get_dublicates(int* ar, int size)
 {
 	int temp[size];
-	for (int i = 0, i < size, i++)
+	for (int i = 0; i < size; i++)
 	{
 		int flag = 0;
-		for (int q = 0, q < size, q++)
+		for (int q = 0; q < size; q++)
 		{
-			if ar[i] == temp[q]
+			if (ar[i] == temp[q])
 			{
 				flag = 1;
 			}
 		}
-		if flag == 1
+		if (flag == 1)
 		{
 			continue;
 		}
 		else 
 		{
-			for (int q = 0; q < size, q++)
+			for (int q = 0; q < size; q++)
 			{
-				if ar[i] == ar[q] {
+				if (ar[i] == ar[q]) {
 					temp[i] = ar[i];
 					printf("%d", ar[i]);
 				}
@@ -92,11 +92,45 @@ void get_dublicates(int* ar, int size)
 	}
 }
 
+int is_pol(int a)
+{
+	int cp = a;
+	int pl = 0;
+	while (cp > 0)
+	{
+		pl = pl * 10 + cp % 10;
+		cp /= 10;
+	}
+	if (a - pl == 0)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}
 
+int count_1(int a)
+{
+	int count = 0;
+	while (a > 0)
+	{
+		if (a & 1)
+		{
+			count++;
+		}
+		a = a >> 1;
+	}
+	return count;
+}
 
-
-
-
+void s_swap(int* a, int* b)
+{
+	int temp = *a;
+	*a = *b;
+	*b = temp;
+}
 
 
 
@@ -202,7 +236,71 @@ int main()
 		answer += array[i-1] * pow(x,i);
 	}
 	printf("%s\t%d\n%s\n", "here is ur sub", answer, "________________________");	
+	
+	
+
+	int a = 0;
+	scanf("%d", &a);
+
+	if (is_pol(a))
+	{
+		printf("%s\n", "yes");
+	}
+	else
+	{
+		printf("%s\n", "no");
+	}
+	
+
+
+
+	int b = 0;
+	scanf("%d", &b);
+	printf("%d\n", count_1(b));
 	*/
+	int size, movement = 0;
+	scanf("%d%d", &size, &movement);
+	int ar[size];
+	for (int i = 0; i < size; i++)
+	{
+		scanf("%d", &ar[i]);
+	}
+	for (int i = 0; i < size - movement; i++)
+	{
+		for (int j = size - movement - 1 ; j > 0; j--)
+		{
+			int temp = 0;
+			temp = ar[i];
+			ar[i] = ar[j];
+			ar[j] = temp;
+		}
+	}
+	/*
+	for (int i = size + movement; i < size; i++)
+	{
+		for (int j = size - 1; j > size + movement; j--)
+		{
+			int temp = 0;
+			temp = ar[i];
+			ar[i] = ar[j];
+			ar[j] = temp;
+		}
+	}
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = size - 1; j > 0; j--)
+		{
+			int temp = 0;
+			temp = ar[i];
+			ar[i] = ar[j];
+			ar[j] = temp;
+		}
+	}*/
+	for (int i = 0; i < size; i++)
+	{
+	printf("%d\t", ar[i]);
+	}
+
 	
 	return 0;
 }
