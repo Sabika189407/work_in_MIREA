@@ -3,6 +3,9 @@
 #include <string.h>
 #include <ctype.h>
 
+#include "check.h"
+#include "calc.h"
+
 int check_imput(int* size, char** ar)
 {
 	if (size == NULL || ar == NULL)
