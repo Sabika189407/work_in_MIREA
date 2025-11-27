@@ -7,16 +7,30 @@
 
 int is_number(char* ar)
 {
-	if (ar == NULL)
+	if (ar == NULL || ar[0] == '\0')
 	{
 		printf("pointer is NULL!\n");
 		return -1;
 	}
-	for (int i = 0; ar[i] != '\0'; i++)
+
+	if (ar[0] == '-')
 	{
-		if (isdigit(ar[i]) == 0)
+		for (int i = 1; ar[i] != '\0'; i++)
 		{
-			return 1;
+			if (isdigit(ar[i]) == 0)
+			{
+				return 1;
+			}
+		}
+	}
+	else
+	{
+		for (int i = 0; ar[i] != '\0'; i++)
+		{
+			if (isdigit(ar[i]) == 0)
+			{
+				return 1;
+			}
 		}
 	}
 	return 0;
@@ -29,17 +43,14 @@ int is_operand(char* ar)
 		printf("pointer is NULL!\n");
 		return -1;
 	}
-	for (int i = 0; ar[i] != '\0'; i++)
+	if (ar[0] != '+' &&
+		ar[0] != '-' &&
+		ar[0] != '*' &&
+		ar[0] != '%')
 	{
-		if (ar[i] != '+' &&
-		    ar[i] != '-' &&
-		    ar[i] != '\"' &&
-		    strcmp(&ar[i], "\%") != 0 &&
-		    ar[i] == '_')
-		{
-			return 1;
-		}
+		return 1;
 	}
+	
 	return 0;
 }
 
@@ -77,27 +88,31 @@ int check_imput(int* size, char** ar)
 		printf("not enough operands\n");
 		return 1;
 	}
-
-	for (int i = 1; strcmp(ar[i],"-k") != 0; i ++)
+	
+	int count = 0;
+	for (int i = 2; i < (*size)-2; i += 3)
 	{
-		int count = 2;
-		if (is_operand(ar[count]) != 0)
+		count++;
+	}
+
+	for (int i = 0; i < count; i++)
+	{
+		if (is_operand(ar[2 + i*3]) != 0)
 		{
-			printf("%s %c\n", "incorrect operand in input:", *ar[count]);
+			printf("%s %c\n", "incorrect operand in input:", *ar[2 + i*3]);
 
 			return 1;
 		}
-		if (is_number(ar[count-1]) != 0)
+		if (is_number(ar[2 + i*3 - 1]) != 0)
 		{
-			 printf("%s %c\n", "incorrect number in input:", *ar[count-1]);
+			 printf("%s %c\n", "incorrect number in input:", *ar[2 + i*3 - 1]);
 			 return 1;
 		}
-		if (is_number(ar[count+1]) != 0)
+		if (is_number(ar[2 + i*3 + 1]) != 0)
 		{
-			printf("%s %c\n", "incorrect number in input:", *ar[count+1]);
+			printf("%s %c\n", "incorrect number in input:", *ar[2 + i*3 + 1]);
 			return 1;
 		}
-		count += 3;
 	}
     	return 0;
 }

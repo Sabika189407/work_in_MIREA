@@ -27,7 +27,7 @@ void calc(int* size, char** ar)
 		{
 			letter = ((atoi(ar[2 + i*3 -1]) - atoi(ar[2 + i*3 + 1])) - iterator);
 		}
-		else if (strcmp(ar[2 + i*3], "\"*\"") == 0)
+		else if (*ar[2 + i*3] == '*')
 		{
 			letter = ((atoi(ar[2 + i*3 -1]) * atoi(ar[2 + i*3 + 1])) - iterator);
 		}
