@@ -54,15 +54,8 @@ Vector& Vector::operator=(const Vector& other)
 
 Vector::Vector(Vector &&other) noexcept
 {
-    _size = other._size;
-    other._size = 0;
-    _capacity = other._capacity;
-    other._capacity = 0;
-    _multiplicativeCoef = other._multiplicativeCoef;
-    other._multiplicativeCoef = 0;
-    _data = new ValueType[_size];
-    _data = other._data;
-    other._data = nullptr;
+    Vector();
+    *this = std::move(other);
 }
 
 Vector &Vector::operator=(Vector &&other) noexcept
@@ -78,7 +71,6 @@ Vector &Vector::operator=(Vector &&other) noexcept
     other._capacity = 0;
     _multiplicativeCoef = other._multiplicativeCoef;
     other._multiplicativeCoef = 0;
-    ValueType* _data = other._data;
     other._data = nullptr;
     return *this;
 }
@@ -458,10 +450,5 @@ Vector::Iterator Vector::begin()
 
 Vector::Iterator Vector::end()
 {
-    is_relatable('+');
     return Iterator(&_data[_size]);
-}
-
-extern "C" void sleep_in_thread() {
-    //std::this_thread::sleep_for(std::chrono::milliseconds(100));
 }

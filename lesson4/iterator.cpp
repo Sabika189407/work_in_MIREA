@@ -5,21 +5,11 @@ Iterator::Iterator(ValueType* _ptr)
 
 ValueType& Iterator::operator*()
 {
-    if (ptr == nullptr)
-    {
-        ValueType&& ans = 0;
-        return ans;
-    }
     return *ptr;
 }
 
 const ValueType& Iterator::operator*() const
 {
-    if (ptr == nullptr)
-    {
-        ValueType&& ans = 0;
-        return ans;
-    }
     return *ptr;
 }
 
