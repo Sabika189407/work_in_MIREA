@@ -3,8 +3,6 @@
 #include <stdlib.h>
 #include <utility>
 #include <chrono>
-#include "StackImplementation.h"
-
 
 using ValueType = double;
 //! \brief Класс, реализующий С++ контейнер vector для типа double
