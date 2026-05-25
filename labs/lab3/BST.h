@@ -3,6 +3,7 @@
 #include <utility>
 #include <cstdint>
 #include <string>
+#include <functional>
 
 using Key = uint32_t; //!< тип ключей в дереве
 using Value = double; //!< тип значений в дереве
@@ -53,6 +54,8 @@ public:
     BinarySearchTree &operator=(BinarySearchTree &&other) noexcept;
     //! Деструктор
     ~BinarySearchTree();
+
+    void clear(Node* node);
 
     //! \brief Итератор бинарного дерева поиска
     //! \note Обходит дерево последовательно от узла с меньшим ключом к узлу с большим 
