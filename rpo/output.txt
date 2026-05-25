@@ -1,0 +1,5 @@
+sorted array:
+10	7	6	5	4	4	2	1	0	0	
+max of array - 10
+min of array - 0
+average of array - 3.000000
