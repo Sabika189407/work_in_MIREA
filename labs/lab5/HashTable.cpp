@@ -37,7 +37,7 @@ void HashTable::insert(const KeyType &key, const ValueType &value)
             std::list<std::pair<KeyType, ValueType>>::iterator iter;
             for (iter = old_table[i].begin(); iter != old_table[i].end(); ++iter)
             {
-                size_t newIndex = std::hash<KeyType>{}(iter->first) % _capacity;
+                size_t newIndex = hash_function(iter->first);
                 bool emptyBucket = table[newIndex].empty();
                 table[newIndex].push_back(*iter);
                 if (emptyBucket)
@@ -109,5 +109,10 @@ double HashTable::getLoadFactor()
 
 size_t HashTable::hash_function(const KeyType &key) const
 {
-    return std::hash<KeyType>{}(key) % _capacity;
+    std::size_t hash = 0;
+    for (char c : key)
+    {
+        hash = hash * 31 + static_cast<unsigned char>(c);
+    }
+    return hash % _capacity;
 }
