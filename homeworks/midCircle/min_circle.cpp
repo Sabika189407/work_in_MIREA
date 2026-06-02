@@ -1,4 +1,6 @@
 #include "min_circle.h"
+#include <cmath>
+#include <iostream>
 
 bool Circle::contains(const Point2D& point) const
 {
@@ -11,7 +13,7 @@ bool Circle::contains(const Point2D& point) const
 
 bool Circle::contains(const LineSegment& segment) const
 {
-	return contains(segment.start) && contains(segment.end);
+		return contains(segment.start) && contains(segment.end);
 }
 
 Circle MinimumEnclosingCircleForSegments(const std::vector<LineSegment>& segments)
@@ -45,7 +47,6 @@ Circle minCircleHelper(std::vector<Point2D>& points, std::vector<Point2D> bounda
 	boundary.push_back(points[n-1]);
 	return minCircleHelper(points, boundary, n-1);
 }
-
 Circle minCircle(std::vector<Point2D> points)
 {
 	return minCircleHelper(points, {}, points.size());
@@ -68,23 +69,28 @@ Circle circleFromDiameter(const Point2D& p1, const Point2D& p2)
 
 Circle circleFrom3Points(const Point2D& p1, const Point2D& p2, const Point2D& p3)
 {
-	double A1 = p2.x - p1.x;
-	double A2 = p2.y - p1.y;
-	double A3 = p3.x - p1.x;
-	double A3 = p3.y - p1.y;
-	double A4 = A1*(p1.x+p2.x) + A2*(p1.y+p2.y);
-	double A5 = A3*(p1.x+p3.x) + A3*(p1.y+p3.y);
-	double A6 = 2 * (A1*(p3.y-p2.y) - A2*(p3.x-p2.x));
-	if (A6 == 0)
+	double A = p2.x - p1.x;
+	double B = p2.y - p1.y;
+	double C = p3.x - p1.x;
+	double D = p3.y - p1.y;
+
+	double E = A*(p1.x+p2.x) + B*(p1.y+p2.y);
+	double F = C*(p1.x+p3.x) + D*(p1.y+p3.y);
+
+	double G = 2 * (A*(p3.y-p2.y) - B*(p3.x-p2.x));
+	if (G == 0)
     {
         return Circle{{0,0}, 0};
     }
-	double Cx = (A3*A4 - A2*A5) / A6;
-	double Cy = (A1*A5 - A3*A4) / A6;
+
+	double Cx = (D*E - B*F) / G;
+	double Cy = (A*F - C*E) / G;
 	Point2D center{Cx, Cy};
 	return Circle{center, distance(center, p1)};
 }
-std::vector<Point2D> extractPointsFromSegments(const std::vector<LineSegment>& segments) {
+
+std::vector<Point2D> extractPointsFromSegments(const std::vector<LineSegment>& segments)
+{
 	std::vector<Point2D> points;
 	for (const LineSegment& segment : segments)
     {
@@ -94,7 +100,19 @@ std::vector<Point2D> extractPointsFromSegments(const std::vector<LineSegment>& s
 	}
 	return points;
 }
+
 Point2D findMidPoint(const LineSegment& segment)
 {
 	return Point2D{(segment.start.x+segment.end.x)/2, (segment.start.y+segment.end.y)/2};
+}
+
+int main()
+{
+	LineSegment segment1 = {{0,0}, {4,0}};
+	LineSegment segment2 = {{2,0}, {2,3}};
+	std::vector<LineSegment> segments = {segment1, segment2};
+	Circle result = MinimumEnclosingCircleForSegments(segments);
+	std::cout << "Center: (" << result.center.x << ", " << result.center.y << ")" << std::endl;
+	std::cout << "Radius: " << result.radius << std::endl;
+	return 0;
 }

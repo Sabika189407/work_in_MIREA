@@ -20,9 +20,9 @@ struct Point2D {
      * @return true, если точки равны.
      * @return false, если точки не равны.
      */
-    bool operator==(const Point2D& other) const {
+    bool operator==(const Point2D& other) const;
 		/// Необходимо реализовать самостоятельно
-    }
+    
 
     /**
      * @brief Оператор сравнения на неравенство двух точек.
@@ -68,9 +68,8 @@ struct Circle {
      * @return true, если точка находится внутри окружности.
      * @return false, если точка находится вне окружности.
      */
-    bool contains(const Point2D& point) const {
+    bool contains(const Point2D& point) const;
 		/// Необходимо реализовать самостоятельно
-    }
 
     /**
      * @brief Проверяет, содержится ли отрезок полностью внутри окружности.
@@ -79,9 +78,8 @@ struct Circle {
      * @return true, если отрезок полностью содержится в окружности.
      * @return false, если отрезок выходит за пределы окружности.
      */
-    bool contains(const LineSegment& segment) const {
+    bool contains(const LineSegment& segment) const;
 		/// Необходимо реализовать самостоятельно
-    }
 
     /**
      * @brief Проверяет, содержится ли весь отрезок внутри окружности, включая его середину.
@@ -90,9 +88,8 @@ struct Circle {
      * @return true, если отрезок полностью содержится в окружности.
      * @return false, если отрезок выходит за пределы окружности.
      */
-    bool containsEntireSegment(const LineSegment& segment) const {
+    bool containsEntireSegment(const LineSegment& segment) const;
 		/// Необходимо реализовать самостоятельно
-    }
 };
 
 /**

@@ -54,3 +54,25 @@ std::pair<Node*, size_t> floyd_algorythm(Node* head)
 		}
 		return {nullptr, 0};
 }
+int main(){
+    Node* nodes[5];
+    nodes[4] = new Node{5, nullptr};
+    nodes[3] = new Node{4, nodes[4]};
+    nodes[2] = new Node{3, nodes[3]};
+    nodes[1] = new Node{2, nodes[2]};
+    nodes[0] = new Node{1, nodes[1]};
+    nodes[4]->next = nodes[2];
+    std::pair<Node*, size_t> result = floyd_algorythm(nodes[0]);
+    if (result.first)
+    {
+            std::cout << "The length of cycle " << result.second << " in node\'" << result.first->value << "\'" << std::endl;
+    }
+    else
+    {
+            std::cout << "Cycle was not found" << std::endl;
+    }
+    for (size_t i = 0; i < 5; i++)
+    {
+        delete nodes[i];
+    }
+}
