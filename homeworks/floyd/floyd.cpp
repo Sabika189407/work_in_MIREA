@@ -2,12 +2,12 @@
 #include <iostream>
 
 struct Node {
-    double val;
+    double value;
     Node* next;
-	Node* prev;
+	Node* previous;
 };
 
-Node* findStart(Node* head, Node* turtle)
+Node* start_find(Node* head, Node* turtle)
 {
 	while (head != turtle)
     {
@@ -32,7 +32,7 @@ size_t measure(Node* turtle, Node* hare)
 	return 0;
 }
 
-std::pair<Node*, size_t> floyd(Node* head)
+std::pair<Node*, size_t> floyd_algorythm(Node* head)
 {
 		Node* turtle = head;
 		Node* hare = head;
@@ -49,12 +49,8 @@ std::pair<Node*, size_t> floyd(Node* head)
             }
 			if (hare && (hare == turtle))
             {
-				return {findStart(head, turtle), measure(turtle, hare)};
+				return {start_find(head, turtle), measure(turtle, hare)};
 			}
 		}
 		return {nullptr, 0};
-}
-
-int main() {
-
 }

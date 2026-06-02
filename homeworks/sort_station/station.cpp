@@ -4,7 +4,7 @@
 #include <sstream>
 #include <queue>
 
-bool isNumber(const std::string& token)
+bool is_number(const std::string& token)
 {
 	if (token.length() == 0)
     {
@@ -14,7 +14,7 @@ bool isNumber(const std::string& token)
 	if (token[0] == '-')
     {
 			if (token.length() == 1) return false;
-			++i;
+			i++;
 	}
 	for (; i < token.length(); i++)
     {
@@ -49,7 +49,7 @@ int main()
 	std::string token;
 	while (input_s >> token)
     {
-		if (isNumber(token))
+		if (is_number(token))
         {
 			std::cout << token << ' ';
 			continue;
